@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Iris Flower Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for "value1"> sepal-length:</label>
+        	<input type="range" name="sepal-length" id="value1" value="4" min="0.5" max="7" oninput="Outvalue1.value = value1.value"/>
+            <output name="Out1" id="Outvalue1">4</output>
+        </div>
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for "value2"> sepal-width:</label>
+    		<input type="range" name="sepal-width" id="value2" value="1.5" min="0.1" max="2.5" oninput="Outvalue2.value = value2.value" />
+            <output name="Out2" id="Outvalue2">1.5</output>
+        </div>
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for "value3"> petal-length:</label>
+    		<input type="range" name="petal-length" id="value3" min="1" max="8" value="3.5" oninput="Outvalue3.value = value3.value" />
+            <output name="Out3" id="Outvalue3">3.5</output>
+        </div>
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for "value4"> petal-width:</label>
+            <input type="range" name="petal-width" id="value4" min="2" max="5" value="3.5" oninput="Outvalue4.value = value4.value" />
+            <output name="Out4" id="Outvalue4">3.5</output>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
