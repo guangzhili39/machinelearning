@@ -1,0 +1,10 @@
+Over the course of my working life I have had the opportunity to use many 
+programming concepts and technologies to do countless things. Some of these 
+things involve relatively low value fruits of my labor, such as automating the 
+error prone or mundane like report generation, task automation, and general 
+data reformatting. Others have been much more valuable, such as developing 
+data products, web applications, and data analysis and 
+processing pipelines. 
+
+One thing that is notable about nearly all of these projects is the need to 
+simply open a file, parse its contents, and do something with it.
