@@ -11,6 +11,10 @@ import cv2
 def recvall(sock, maxmsgLen):
     return sock.recv(maxmsgLen)
 
+def say(engine,str):
+    engine.say(str)
+    engine.runAndWait()
+    
 def generateimage(count,cmdpath):
     images = []
     import cv2
@@ -78,18 +82,18 @@ def faceVerify(recognizer,name,cmdpath):
     while count < 40:
         #capture frame by frame
         ret,frame = webcam.read()
+        cv2.imshow("Find You",frame)   
         # face detection in gray not colore
         if count == rand+during:
-            engine.say("please close your mouth")
-            engine.runAndWait()
+            say(engine,"please stop")
+            
             challenge = 2
         if count >=rand and count <= rand+during:
             if challenge == 0:
-                engine.say("please open your mouth")
-                engine.runAndWait()
+                say(engine,"please say: bah bah bah bah bah bah bah")
                 challenge = 1
                 
-            cv2.putText(frame,"please open your mouth",(20,20),font,1,(0,255,0),3)
+            cv2.putText(frame,"please say: bah bah bah bah bah bah bah",(20,20),font,1,(0,255,0),3)
 #        time.sleep(0.01)    
 
         gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
@@ -114,7 +118,7 @@ def faceVerify(recognizer,name,cmdpath):
                      opentime += 1
                      widthopen += ear
                     
-        cv2.imshow("Find You",frame)           
+                
         cv2.waitKey(10)
         
     webcam.release()

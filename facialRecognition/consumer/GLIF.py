@@ -14,6 +14,7 @@ import common as com
 import cv2
 import os
 
+# sign-in function with relative path and user name
 def signin(name,cmdpath):
     import faceModelBuild as fmb
     
@@ -26,12 +27,13 @@ def signin(name,cmdpath):
         images = com.generateimage(10,cmdpath)
         counter = 0
         for image in images:
-            img_item = folder+"/"+str(counter)+".jpg"
+            img_item = folder+"/{}.jpg".format(counter)
             cv2.imwrite(img_item,image)
             counter += 1
         fmb.faceModelBuild(name)           
     return "success"
 
+# login function with relative path and user name
 def login(name,cmdpath):
     
     folder = cmdpath+"/person/"+name.lower()+".model.yml"
@@ -43,6 +45,7 @@ def login(name,cmdpath):
         answer = com.faceVerify(recognizer,name,cmdpath)
     return answer
 
+# if facial login fails due to whatever reason, user still can login using password
 def pwdlogin(name,cmdpath):
     
     folder = cmdpath+"/person/"+name.lower()+".pwd"
@@ -66,7 +69,7 @@ if __name__ == '__main__':
     print(cmdpath)
     ret = " "
     while True:
-        action,name,pwd = ac.getusername(ret)
+        action,name,pwd = ac.getusername(ret,cmdpath)
         if action == 'login':
             ret = login(name,cmdpath)
         elif action == 'signin':
@@ -91,6 +94,7 @@ if __name__ == '__main__':
             else:
                 ret = "password does not match"
         if ret == name:
+            print("login succeed")
             break
            
 #        if action == 'login':

@@ -13,3 +13,7 @@ If python 3 was installed in your machine, your can go to the consumer directory
 
 For enterprise version, we need one server.py and one client.py. Server.py runs as a demon with its IP address, and listen on a specific 
 port, all clients connect to the IP address and port using sockets. It is still in a very early stage. 
+
+To run it in command line:
+conda activate
+python GLIF.py
